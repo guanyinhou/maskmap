@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css'/>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="loading">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div id="map"></div>
+    <div id="header">
+        <div class="inventory">
+            <img src="./img/inventory.svg" alt="">
+        </div>
+        <div class="inventory-btns">
+            <button class="btn full">充足</button>
+            <button class="btn normal">普通</button>
+            <button class="btn few">少量</button>
+            <!-- <button class="btn alcohol">找酒精</button> -->
+        </div>
+        <div class="pull-right">
+            <div class="left-side">
+                <div class="date"></div>
+                <div class="day"></div>
+            </div>
+            <div class="right-side">
+                <div class="time"></div>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <div class="pic">
+                <img src="./img/doctor.svg" alt="">
+            </div>
+            <div class="content">
+                <div class="title">貼心小提醒</div>
+                <p>今天是身分證末一碼為</p>
+                <p>「
+                    <span class="special odd">1、3、5、7、9</span>
+                    <span class="special even">2、4、6、8、0</span>
+                    <span class="special all">任何數字</span>
+                    」</p>
+                <p>
+                    的民眾<span class="otherday">才</span><span class="sunday">皆</span>能購買口罩唷！
+                </p>
+            </div>
+            <div class="selection">
+                <div class="select-city">
+                    <p>選擇城市</p>
+                    <select name="cityList" id="cityList"></select>
+                </div>
+                <div class="select-country">
+                    <p>選擇鄉鎮市區</p>
+                    <select name="countryList" id="countryList"></select>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main" id="scrollbar">
+            <ul class="force-overflow">
+                <!-- <div class="info-card">
+                    <div class="info-top">
+                        <div class="info-title"></div>
+                        <div class="info-content">
+                            <div class="tel">02-23050880</div>
+                            <div class="address">台北市中正區中華路2段313巷4號</div>
+                        </div>
+                        <div class="call">
+                            <a href="#" class="btn-phone">
+                                <img src="./img/btn_phone.svg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info-inventory">
+                        <div class="info-left">
+                            成人：<span class="adult-num">450</span>
+                        </div>
+                        <div class="info-right">
+                            兒童：<span class="adult-num">200</span>
+                        </div>
+                    </div>
+                </div> -->
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <p>
+                口罩庫存最後更新時間：
+                <!-- <span class="update">2020/09/16 22:40</span> -->
+                <span class="update"></span>
+            </p>
+        </div>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js'></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
