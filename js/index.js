@@ -8,6 +8,10 @@ toggler.addEventListener("click", function(){
     headerDom.classList.toggle("active");
     // console.log(toggler.parentElement);
 })
+let infoCard = document.querySelectorAll(".force-overflow > .info-card");
+infoCard.addEventListener("click", function(){
+    console.log("tes")
+})
 
 var map = L.map('map').setView([0,0], 16);
 

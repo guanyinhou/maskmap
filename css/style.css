@@ -11,7 +11,7 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 450;
+  z-index: 1005;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.7);
 }
@@ -19,10 +19,36 @@ html, body {
 .loading i {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 49%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   color: #0ba29c;
+  width: 48px;
+  height: 48px;
+}
+
+@media (max-width: 1199.98px) {
+  .loading i {
+    left: 48%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .loading i {
+    left: 47%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .loading i {
+    left: 45%;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .loading i {
+    left: 43.5%;
+  }
 }
 
 .geoBtn {
