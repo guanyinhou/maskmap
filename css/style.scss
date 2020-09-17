@@ -594,6 +594,9 @@ html, body{
             width: 100%;
             background-color: #0ba29c;
             text-align: center;
+            @media(max-width: 479.98px){
+                height: 50px;
+            }
             p{
                 margin: 0;
                 line-height: 60px;
@@ -601,6 +604,9 @@ html, body{
                 font-size: 17px;
                 @media(max-width: 991.98px){
                     font-size: 16px;
+                }
+                @media(max-width: 479.98px){
+                    line-height: 50px;
                 }
             }
         }

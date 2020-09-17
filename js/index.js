@@ -1,8 +1,9 @@
 const toggler = document.querySelector("#toggler");
 // const mapDom = document.querySelector("#map");
 const headerDom = document.querySelector("#header");
+const sidebarDom = document.querySelector("#sidebar");
 toggler.addEventListener("click", function(){
-    toggler.parentElement.classList.toggle("active");
+    sidebarDom.classList.toggle("active");
     // mapDom.classList.toggle("active");
     headerDom.classList.toggle("active");
     // console.log(toggler.parentElement);
@@ -234,6 +235,9 @@ function clickCard(infoCard){
                 const layerLatLng = layer.getLatLng();
                 if(layerLatLng.lat === lat && layerLatLng.lng === lng){
                     layer.openPopup();
+                    if(screen.width <= 767){
+                        sidebarDom.classList.toggle("active");
+                    }
                 }
             })
         })

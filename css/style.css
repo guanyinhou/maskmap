@@ -773,6 +773,12 @@ html, body {
   text-align: center;
 }
 
+@media (max-width: 479.98px) {
+  #sidebar .sidebar-footer {
+    height: 50px;
+  }
+}
+
 #sidebar .sidebar-footer p {
   margin: 0;
   line-height: 60px;
@@ -783,6 +789,12 @@ html, body {
 @media (max-width: 991.98px) {
   #sidebar .sidebar-footer p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 479.98px) {
+  #sidebar .sidebar-footer p {
+    line-height: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */
