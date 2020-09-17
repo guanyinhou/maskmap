@@ -93,7 +93,7 @@ var blueIcon = new L.icon({
     shadowSize: [29, 41]
 });
 var yellowIcon = new L.icon({
-    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3Acbf096b9-550f-4e78-a2fb-7ae392d3063a&params=version%3A0&token=1600305501_da39a3ee_03861adc5767e95028eb7fd6d3346b46197525cf&api_key=CometServer1',
+    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3A669ebf6b-a97a-4ad8-8259-bc1f48fff75d&params=version%3A0&token=1600414285_da39a3ee_db0e28fc272362b09e6c2828f48547667b30afae&api_key=CometServer1',
     // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/iamges/marker-shadow.png',
     iconSize: [29, 41],
     iconAnchor: [12, 41],
@@ -101,7 +101,7 @@ var yellowIcon = new L.icon({
     shadowSize: [41, 41]
 });
 var redIcon = new L.icon({
-    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3A08388ab3-8c10-45db-ab10-30ac88829ed0&params=version%3A0&token=1600305501_da39a3ee_03861adc5767e95028eb7fd6d3346b46197525cf&api_key=CometServer1',
+    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3A6fa9b21f-143e-44aa-a1bb-2dcfa5fbdce5&params=version%3A0&token=1600414285_da39a3ee_db0e28fc272362b09e6c2828f48547667b30afae&api_key=CometServer1',
     // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/iamges/marker-shadow.png',
     iconSize: [29, 41],
     iconAnchor: [12, 41],
@@ -109,7 +109,7 @@ var redIcon = new L.icon({
     shadowSize: [41, 41]
 });
 var grayIcon = new L.icon({
-    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3Aacded1e2-2120-4784-af9a-2754759d68a7&params=version%3A0&token=1600305501_da39a3ee_03861adc5767e95028eb7fd6d3346b46197525cf&api_key=CometServer1',
+    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3A9652be29-fff5-4afc-b981-53010fa869cf&params=version%3A0&token=1600414285_da39a3ee_db0e28fc272362b09e6c2828f48547667b30afae&api_key=CometServer1',
     // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/iamges/marker-shadow.png',
     iconSize: [29, 41],
     iconAnchor: [12, 41],
