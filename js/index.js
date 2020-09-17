@@ -1,3 +1,13 @@
+const toggler = document.querySelector("#toggler");
+// const mapDom = document.querySelector("#map");
+const headerDom = document.querySelector("#header");
+toggler.addEventListener("click", function(){
+    toggler.parentElement.classList.toggle("active");
+    // mapDom.classList.toggle("active");
+    headerDom.classList.toggle("active");
+    // console.log(toggler.parentElement);
+})
+
 var map = L.map('map').setView([0,0], 16);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -45,8 +55,8 @@ function renderTime(){
     time = setTimeout(renderTime, 1000);
     document.querySelector(".date").textContent = date.getMonth()+1 < 10 ? `0${date.getMonth()+1}/${date.getDate()}` : `${date.getMonth()+1}/${date.getDate()}`;
     
-    let day = date.getDay();
-    // let day = 2;
+    // let day = date.getDay();
+    let day = 0;
     if(day === 1 || day === 3 || day === 5){
         document.querySelector(".odd").style.display="inline-block";
         document.querySelector(".otherday").style.display="inline-block";
@@ -236,7 +246,7 @@ const countryList = document.querySelector("#countryList");
 function addCity(){
     let allZone = [];
     let str = "";
-    str = `<option selected disabled value="">請選擇縣市</option>`;
+    str = `<option selected disabled value="">請選擇</option>`;
     data.forEach(item=>{
         let cityName = item.properties.county;
         if(allZone.indexOf(cityName) === -1 && cityName !== ""){
@@ -247,11 +257,11 @@ function addCity(){
     cityList.innerHTML = str;
 }
 cityList.addEventListener("change", addCountry);
-countryList.innerHTML = `<option selected disabled value="">請選擇鄉鎮市區</option>`;
+countryList.innerHTML = `<option selected disabled value="">請選擇</option>`;
 
 function addCountry(e){
     let value = e.target.value;
-    let str = `<option selected disabled value="">請選擇鄉鎮市區</option>`;
+    let str = `<option selected disabled value="">請選擇</option>`;
     let allZone = [];
     let newStr = "";
     data.forEach(item=>{

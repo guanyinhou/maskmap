@@ -11,8 +11,14 @@ html, body{
     right: 0;
     z-index: 450;
     text-align: center;
-    line-height: 50;
     background-color: rgba(255,255,255,.7);
+    i{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: #0ba29c;
+    }
 }
 .geoBtn{
     background: url(../img/btn_locate.svg);
@@ -21,7 +27,7 @@ html, body{
     position: absolute;
     right: 6.5px;
     bottom: 90px;
-    z-index: 400;
+    z-index: 1001;
     border: 0;
     background-position: center;
     padding: 0;
@@ -29,6 +35,16 @@ html, body{
     cursor: pointer;
     &:focus{
         outline: none;
+    }
+    @media(max-width: 479.98px){
+        bottom: 110px;
+    }
+}
+.leaflet-touch .leaflet-bar a{
+    background-color: #08a29c;
+    color: #fff;
+    &.leaflet-disabled{
+        background-color: #00000080;
     }
 }
 .leaflet-popup-content-wrapper{
@@ -103,8 +119,16 @@ html, body{
 }
 #map{
     box-sizing: border-box;
+    // width: calc(100% - 380px);
     width: 100%;
     height: 100%;
+    // left: 380px;
+    left: 0;
+    transition: all .4s;
+    // &.active{
+    //     left: 0;
+    //     width: 100%;
+    // }
 }
     .leaflet-control-container{
         .leaflet-top.leaflet-left{
@@ -117,6 +141,9 @@ html, body{
                 margin-left: 0;
                 margin-bottom: 25px;
                 margin-right: 10px;
+                @media(max-width: 479.98px){
+                    margin-bottom: 45px;
+                }
             }
         }
     }
@@ -126,13 +153,23 @@ html, body{
         top: 0;
         left: 0;
         right: 0;
-        z-index: 401;
+        z-index: 1001;
         background-color: rgba(255,255,255,0.95);
+        @media(max-width: 479.98px){
+            height: 80px;
+        }
         .pull-right{
             float: right;
             color: #0BA29C;
             margin-top: 15px;
             margin-right: 30px;
+            @media(max-width: 991.98px){
+                margin-right: 15px;
+            }
+            @media(max-width: 479.98px){
+                margin-right: 10px;
+                margin-top: 7.5px;
+            }
             .left-side{
                 float: left;
                 // margin-top: 10px;
@@ -142,11 +179,28 @@ html, body{
                     line-height: 30px;
                     font-family: microsoft jhenghei;
                     font-weight: 300;
+                    @media(max-width: 991.98px){
+                        font-size: 20px;
+                        margin-top: 6px;
+                    }
+                    @media(max-width: 479.98px){
+                        font-size: 16px;
+                        line-height: 20px;
+                        margin-top: 14px;
+                    }
                 }
                 .day{
                     margin-top: 3px;
                     font-size: 22px;
                     line-height: 30px;
+                    @media(max-width: 991.98px){
+                        font-size: 16px;
+                        margin-top: 0;
+                    }
+                    @media(max-width: 479.98px){
+                        font-size: 13px;
+                        line-height: 20px;
+                    }
                 }
             }
             .right-side{
@@ -157,21 +211,54 @@ html, body{
                     line-height: 65px;
                     font-weight: 300;
                     font-family: microsoft jhenghei;
+                    @media(max-width: 991.98px){
+                        font-size: 58px;
+                        margin-left: 10px;
+                    }
+                    @media(max-width: 479.98px){
+                        font-size: 40px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+        }
+        &.active{
+            .inventory{
+                margin-left: 30px;
+                @media(max-width: 767.98px){
+                    margin-left: 15px;
                 }
             }
         }
         .inventory{
-            margin-left: 470px;
+            transition: all .4s;
+            margin-left: 420px;
             display: inline-block;
+            margin-top: 8px;
+            @media(max-width: 1199.98px){
+                margin-left: 360px;
+            }
+            @media(max-width: 991.98px){
+                width: 220px;
+                margin-top: 17.5px;
+                margin-left: 315px;
+            }
+            @media(max-width: 767.98px){
+                margin-left: 15px;
+            }
+            @media(max-width: 479.98px){
+                width: 150px;
+                margin-left: 10px;
+            }
             img{
-                margin-top: 8px;
+                width: 100%;
             }
         }
         .inventory-btns{
             display: inline-block;
             margin-top: 22px;
             vertical-align: top;
-            margin-left: 50px;
+            margin-left: 100px;
             .btn{
                 padding: 12px 26px;
                 font-size: 23px;
@@ -273,10 +360,76 @@ html, body{
         left: 0;
         bottom: 0;
         top: 0;
-        background-color: rgba(255,255,255,0.95);
-        z-index: 402;
+        background-color: rgba(255,255,255,1);
+        z-index: 1001;
         box-shadow: 5px 0 5px #ddd;
         box-sizing: border-box;
+        transition: all .4s ease-in-out;
+        @media(max-width: 1199.98px){
+            width: 320px;
+        }
+        @media(max-width: 991.98px){
+            width: 300px;
+            padding: 15px;
+        }
+        @media(max-width: 767.98px){
+            left: -300px;
+            box-shadow: 1px 0 1px #ddd;
+        }
+        #toggler{
+            position: absolute;
+            top: 150px;
+            right: -25px;
+            padding: 15px 10px 15px 15px;
+            background-color: #fff;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-shadow: 5px 5px 5px #ddd;
+            min-height: 18.4px;
+            @media(max-width: 479.98px){
+                right: -18px;
+                padding: 10px 5px 10px 10px;
+            }
+            cursor: pointer;
+            i:last-of-type{
+                display: none;
+                @media(max-width: 767.98px){
+                    display: block;
+                }
+            }
+            @media(max-width: 767.98px){
+                box-shadow: 1px 0 1px #ddd;
+                i:first-of-type{
+                    display: none;
+                }
+            }
+        }
+        &.active{
+            left: -380px;
+            @media(max-width: 1199.98px){
+                left: -320px;
+            }
+            @media(max-width: 991.98px){
+                left: -300px;
+            }
+            @media(max-width: 767.98px){
+                left: 0;
+            }
+            #toggler{
+                i:first-of-type{
+                    display: none;
+                    @media(max-width: 767.98px){
+                        display: block;
+                    }
+                }
+                i:last-of-type{
+                    display: block;
+                    @media(max-width: 767.98px){
+                        display: none;
+                    }
+                }
+            }
+        }
         .sidebar-header{
             margin-bottom: 20px;
             .selection{
@@ -301,6 +454,10 @@ html, body{
             }
             .pic{
                 display: inline-block;
+                @media(max-width: 1199.98px){
+                    width: 100px;
+                }
+                img{width: 100%;}
             }
             .content{
                 color: #00000080;
@@ -310,13 +467,19 @@ html, body{
                 vertical-align: top;
                 font-weight: bold;
                 margin-left: 5px;
+                @media(max-width: 1199.98px){
+                    width: calc(100% - 110px);
+                }
                 .title{
                     color: #0BA29C;
                     font-size: 24px;
                     line-height: 31px;
                     margin-top: 12px;
                     margin-bottom: 5px;
-    
+                    @media(max-width: 1199.98px){
+                        margin-top: 0;
+                        line-height: 26px;
+                    }
                 }
                 .special{
                     color: #FBB03B;
@@ -324,6 +487,12 @@ html, body{
                 }
                 p{
                     margin: 0;
+                    @media(max-width: 1199.98px){
+                        font-size: 15px;
+                    }
+                    @media(max-width: 991.98px){
+                        font-size: 14px;
+                    }
                     .otherday, .sunday{
                         display: none;
                     }
@@ -334,6 +503,12 @@ html, body{
             height: calc(100% - 220px);
             overflow-y: scroll;
             width: 350px;
+            @media(max-width: 1199.98px){
+                width: 290px;
+            }
+            @media(max-width: 991.98px){
+                width: 280px;
+            }
             &::-webkit-scrollbar{
                 width: 6px;
                 background-color: #f5f5f5;
@@ -348,6 +523,9 @@ html, body{
                 padding-right: 15px;
                 padding-left: 0;
                 margin-top: 0;
+                @media(max-width: 991.98px){
+                    padding-right: 10px;
+                }
                 .info-card{
                     list-style: none;
                     margin-bottom: 17px;
@@ -420,6 +598,9 @@ html, body{
                 line-height: 60px;
                 color: #fff;
                 font-size: 17px;
+                @media(max-width: 991.98px){
+                    font-size: 16px;
+                }
             }
         }
     }
