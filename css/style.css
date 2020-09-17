@@ -17,13 +17,41 @@ html, body {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.geoBtn {
+  background: url(../img/btn_locate.svg);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 6.5px;
+  bottom: 90px;
+  z-index: 400;
+  border: 0;
+  background-position: center;
+  padding: 0;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.geoBtn:focus {
+  outline: none;
+}
+
 .leaflet-popup-content-wrapper {
   position: relative;
   padding: 0;
 }
 
 .leaflet-popup-content-wrapper .leaflet-popup-content {
+  min-width: 80px;
+  min-height: 60px;
   margin: 0;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content > b {
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 60px;
 }
 
 .leaflet-popup-content-wrapper .leaflet-popup-content .info-card {

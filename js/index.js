@@ -5,6 +5,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     }).addTo(map);
 
 const marker = L.marker([0,0]).addTo(map);
+let userLat;
+let userLng;
 
 // 定位使用者
 if(navigator.geolocation) {
@@ -13,24 +15,24 @@ if(navigator.geolocation) {
         userLat = pos.coords.latitude;
         userLng = pos.coords.longitude;
         map.setView([userLat, userLng], 16);
-        // marker.setLatLng([userLat, userLng]).bindPopup("你的位置").openPopup();
+        marker.setLatLng([userLat, userLng]).bindPopup("<b>你的位置</b>").openPopup();
     });
 } else {
     alert('Sorry, 你的裝置不支援地理位置功能。')
 }
 
 // 新增定位
-// let geoBtn = document.querySelector("#jsGeoBtn");
-// geoBtn.addEventListener("click", function(){
-//     map.setView([userLat, userLng], 16);
-//     marker.setLatLng([userLat, userLng]).bindPopup("你的位置").openPopup();
-// }, false);
+let geoBtn = document.querySelector("#jsGeoBtn");
+geoBtn.addEventListener("click", function(){
+    map.setView([userLat, userLng], 16);
+    marker.setLatLng([userLat, userLng]).bindPopup("<b>你的位置</b>").openPopup();
+}, false);
 
 // about time
 function renderTime(){
     let date = new Date();
     let time;
-    console.log(date);
+    // console.log(date);
     let mins = date.getMinutes();
     if(mins < 10) {
         mins = "0"+mins;
@@ -85,7 +87,7 @@ function renderTime(){
 var data;
 
 var blueIcon = new L.icon({
-    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3Aabb29054-dcf5-4306-89b5-a5aedf4dbf45&params=version%3A0&token=1600331139_da39a3ee_15af070838a1176975192454c4471d65ff303750&api_key=CometServer1',
+    iconUrl: 'https://public-v2links.adobecc.com/ed8ebf4f-653e-4a8e-764b-1f5e33f4fefb/component?params=component_id%3Ac8493ec6-f5bf-418d-acd5-24176c8f5943&params=version%3A0&token=1600414285_da39a3ee_db0e28fc272362b09e6c2828f48547667b30afae&api_key=CometServer1',
     // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/iamges/marker-shadow.png',
     iconSize: [29, 41],
     iconAnchor: [12, 41],
@@ -118,19 +120,21 @@ var grayIcon = new L.icon({
 });
 
 var markers = new L.MarkerClusterGroup().addTo(map);
-var xhr = new XMLHttpRequest();
-xhr.open("get", "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json");
-xhr.send();
-xhr.onload = function(){
-    document.querySelector(".loading").style.display = "none";
-    data = JSON.parse(xhr.responseText).features;
-    // console.log(JSON.parse(xhr.responseText));
-    renderList();
-    renderMarker();
-    addCity();
-    // console.log(data);
+function getData(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json");
+    xhr.send();
+    xhr.onload = function(){
+        document.querySelector(".loading").style.display = "none";
+        data = JSON.parse(xhr.responseText).features;
+        // console.log(JSON.parse(xhr.responseText));
+        renderList();
+        renderMarker();
+        addCity();
+        // console.log(data);
+    }
+    map.addLayer(markers);
 }
-map.addLayer(markers);
 
 function renderMarker(){
     data.forEach(item=>{
@@ -145,7 +149,7 @@ function renderMarker(){
             mask = grayIcon;
         }
         markers.addLayer(L.marker([item.geometry.coordinates[1], item.geometry.coordinates[0]], {icon: mask}).bindPopup(
-            `<li class="info-card">
+            `<li class="info-card" data-lat="${item.geometry.coordinates[1]}" data-lng="${item.geometry.coordinates[0]}">
             <div class="info-top">
                 <div class="info-title">${item.properties.name}</div>
                 <div class="info-content">
@@ -175,7 +179,7 @@ function renderList(){
     console.log(data);
     let str = "";
     data.forEach(item =>{
-        str+= `<li class="info-card">
+        str+= `<li class="info-card" data-lat="${item.geometry.coordinates[1]}" data-lng="${item.geometry.coordinates[0]}">
         <div class="info-top">
             <div class="info-title">${item.properties.name}</div>
             <div class="info-content">
@@ -199,10 +203,31 @@ function renderList(){
     </li>`;
     });
     document.querySelector(".force-overflow").innerHTML = str;
+    // 點選卡片掉到地圖定點 1
+    let infoCard = document.querySelectorAll(".force-overflow > .info-card");
+    clickCard(infoCard);
 
     // update date
     document.querySelector(".update").textContent = data[0].properties.updated;
     // console.log(data[0].properrties.updated);
+}
+
+// 點選卡片掉到地圖定點 2
+function clickCard(infoCard){
+    infoCard.forEach(item=>{
+        item.addEventListener("click", function(e){
+            console.log("listen");
+            let lat = Number(e.currentTarget.dataset.lat);
+            let lng = Number(e.currentTarget.dataset.lng);
+            map.setView([lat, lng], 18);
+            markers.eachLayer(function(layer){
+                const layerLatLng = layer.getLatLng();
+                if(layerLatLng.lat === lat && layerLatLng.lng === lng){
+                    layer.openPopup();
+                }
+            })
+        })
+    })
 }
 
 // 選單
@@ -264,8 +289,8 @@ function filterList(city, dist){
     let str = "";
     data.filter(item =>{
         if(item.properties.county === city && item.properties.town === dist){
-            console.log(item);
-            str+= `<li class="info-card">
+            // console.log(item);
+            str+= `<li class="info-card" data-lat="${item.geometry.coordinates[1]}" data-lng="${item.geometry.coordinates[0]}">
             <div class="info-top">
                 <div class="info-title">${item.properties.name}</div>
                 <div class="info-content">
@@ -290,9 +315,16 @@ function filterList(city, dist){
         }
     });
     document.querySelector(".force-overflow").innerHTML = str;
+    let infoCard = document.querySelectorAll(".force-overflow > .info-card");
+    clickCard(infoCard);
 
     // update date
     document.querySelector(".update").textContent = data[0].properties.updated;
 }
 
-renderTime();
+function init(){
+    renderTime();
+    getData();
+}
+
+init();
