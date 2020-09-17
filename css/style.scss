@@ -32,6 +32,7 @@ html, body{
     background-position: center;
     padding: 0;
     background-size: cover;
+    display: block;
     cursor: pointer;
     &:focus{
         outline: none;
@@ -468,7 +469,7 @@ html, body{
                 font-weight: bold;
                 margin-left: 5px;
                 @media(max-width: 1199.98px){
-                    width: calc(100% - 110px);
+                    width: calc(100% - 115px);
                 }
                 .title{
                     color: #0BA29C;

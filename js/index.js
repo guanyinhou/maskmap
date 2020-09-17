@@ -11,7 +11,7 @@ toggler.addEventListener("click", function(){
 var map = L.map('map').setView([0,0], 16);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors。版面由UI設計師 <a href="https://www.facebook.com/K.T1003">K.T</a> 提供。'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors。版面由UI設計師 <a href="https://www.facebook.com/K.T1003">K.T</a> 提供。<a href="https://guanyinhou.github.io/guanyin/#top">Guanyin Hou</a>製作。'
     }).addTo(map);
 
 const marker = L.marker([0,0]).addTo(map);

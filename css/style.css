@@ -37,6 +37,7 @@ html, body {
   background-position: center;
   padding: 0;
   background-size: cover;
+  display: block;
   cursor: pointer;
 }
 
@@ -609,7 +610,7 @@ html, body {
 
 @media (max-width: 1199.98px) {
   #sidebar .sidebar-header .content {
-    width: calc(100% - 110px);
+    width: calc(100% - 115px);
   }
 }
 
